@@ -33,7 +33,7 @@ export default function Thread({ namespaceId, threadId }) {
       { screenX: window.top.screenX },
       "*"
     );
-  }, [iframe]);
+  }, [iframe.current]);
 
   return (
     <iframe
