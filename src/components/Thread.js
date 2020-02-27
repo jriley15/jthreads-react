@@ -6,7 +6,7 @@ const removeDim = () => {
   document.body.classList.remove("dimmed");
 };
 
-export default function IFrame({ namespaceId, threadId }) {
+export default function IFrame({ namespaceId, threadId, backgroundColor }) {
   const [height, setHeight] = useState(500);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
   const [user, setUser] = useState(false);
@@ -92,7 +92,8 @@ export default function IFrame({ namespaceId, threadId }) {
     <>
       <iframe
         title="JThreads"
-        src={`http://localhost:3000/?namespaceId=${2}&threadId=post-1`}
+        src={`http://localhost:3000/?namespaceId=${namespaceId}&threadId=${threadId}&backgroundColor=${backgroundColor ||
+          "FFF"}`}
         width="100%"
         allowTransparency="true"
         frameBorder="0"
