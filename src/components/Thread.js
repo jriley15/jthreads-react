@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import "../assets/modal.css";
 
 const removeDim = () => {
-  document.body.classList.remove("dimmable");
-  document.body.classList.remove("dimmed");
+  document?.body.classList.remove("dimmable");
+  document?.body.classList.remove("dimmed");
 };
 
 export default function IFrame({ namespaceId, threadId, backgroundColor }) {
@@ -20,8 +20,8 @@ export default function IFrame({ namespaceId, threadId, backgroundColor }) {
       if (event.data.showAvatarModal && event.data.user) {
         setUser(user);
         setShowAvatarModal(true);
-        document.body.classList.add("dimmable");
-        document.body.classList.add("dimmed");
+        document?.body.classList.add("dimmable");
+        document?.body.classList.add("dimmed");
       }
       if (event.data.success) {
         setShowAvatarModal(false);
