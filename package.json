@@ -1,6 +1,6 @@
 {
   "name": "jthreads-react",
-  "version": "0.2.7",
+  "version": "0.4.0",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "url": "https://github.com/jriley15/jthreads-react"
   },
   "dependencies": {
-    "react": "^16.12.0"
+    "react": "^16.12.0",
+    "react-loadable": "^5.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

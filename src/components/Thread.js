@@ -1,11 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../assets/modal.css";
 
-const removeDim = () => {
-  document?.body.classList.remove("dimmable");
-  document?.body.classList.remove("dimmed");
-};
-
 export default function IFrame({ namespaceId, threadId, backgroundColor }) {
   const [height, setHeight] = useState(500);
   const [showAvatarModal, setShowAvatarModal] = useState(false);
@@ -20,16 +15,22 @@ export default function IFrame({ namespaceId, threadId, backgroundColor }) {
       if (event.data.showAvatarModal && event.data.user) {
         setUser(user);
         setShowAvatarModal(true);
-        document?.body.classList.add("dimmable");
-        document?.body.classList.add("dimmed");
+        if (typeof document !== undefined)
+          document.body.classList.add("dimmable");
+        if (typeof document !== undefined)
+          document.body.classList.add("dimmed");
       }
       if (event.data.success) {
         setShowAvatarModal(false);
-        removeDim();
+        if (typeof document !== undefined)
+          document.body.classList.remove("dimmable");
+        if (typeof document !== undefined)
+          document.body.classList.remove("dimmed");
       }
     };
 
-    window.addEventListener("message", handler);
+    if (typeof window !== undefined)
+      window.addEventListener("message", handler);
 
     return () => {
       window.removeEventListener("message", handler);
@@ -58,10 +59,14 @@ export default function IFrame({ namespaceId, threadId, backgroundColor }) {
   useEffect(() => {
     const handleClick = () => {
       setShowAvatarModal(false);
-      removeDim();
+      if (typeof document !== undefined)
+        document.body.classList.remove("dimmable");
+      if (typeof document !== undefined)
+        document.body.classList.remove("dimmed");
     };
 
-    window.addEventListener("click", handleClick);
+    if (typeof window !== undefined)
+      window.addEventListener("click", handleClick);
 
     return () => {
       window.removeEventListener("click", handleClick);
@@ -92,7 +97,7 @@ export default function IFrame({ namespaceId, threadId, backgroundColor }) {
     <>
       <iframe
         title="JThreads"
-        src={`http://localhost:3000/?namespaceId=${namespaceId}&threadId=${threadId}&backgroundColor=${backgroundColor ||
+        src={`https://embed.jrdn.tech/?namespaceId=${namespaceId}&threadId=${threadId}&backgroundColor=${backgroundColor ||
           "FFF"}`}
         width="100%"
         allowTransparency="true"
