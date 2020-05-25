@@ -1,7 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import "../assets/jthreads.css";
+import "./Thread.scss";
+import { ThreadProps } from "./Thread.types";
 
-export default function Thread({ namespaceId, threadId, backgroundColor }) {
+const Thread: React.FC<ThreadProps> = ({
+  namespaceId,
+  threadId,
+  backgroundColor,
+}) => {
   const [height, setHeight] = useState(500);
   const iframe = useRef();
   const [ready, setReady] = useState(false);
@@ -21,10 +26,10 @@ export default function Thread({ namespaceId, threadId, backgroundColor }) {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       {!ready && (
         <div className="jthreads-container">
-          <div className="j-threads-loader">Loading...</div>
+          <div className="j-threads-loader" />
         </div>
       )}
       <iframe
@@ -33,7 +38,7 @@ export default function Thread({ namespaceId, threadId, backgroundColor }) {
           backgroundColor || "FFF"
         }`}
         width="100%"
-        allowTransparency="true"
+        allowTransparency={true}
         frameBorder="0"
         ref={iframe}
         scrolling="no"
@@ -43,6 +48,8 @@ export default function Thread({ namespaceId, threadId, backgroundColor }) {
           display: ready ? "block" : "none",
         }}
       />
-    </>
+    </React.Fragment>
   );
-}
+};
+
+export default Thread;
