@@ -29,7 +29,7 @@ const Thread: React.FC<ThreadProps> = ({
     <React.Fragment>
       {!ready && (
         <div className="jthreads-container">
-          <div className="j-threads-loader" />
+          <div className="loader" />
         </div>
       )}
       <iframe

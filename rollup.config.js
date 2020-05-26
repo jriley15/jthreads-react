@@ -8,19 +8,15 @@ import copy from "rollup-plugin-copy";
 import packageJson from "./package.json";
 
 export default {
-  input: "src/index.ts",
+  input: ["src/index.ts", "src/Thread/Thread.tsx"],
   output: [
     {
-      file: packageJson.main,
+      dir: "build",
       format: "cjs",
       sourcemap: true,
     },
-    {
-      file: packageJson.module,
-      format: "esm",
-      sourcemap: true,
-    },
   ],
+  preserveModules: true,
   plugins: [
     peerDepsExternal(),
     resolve(),
