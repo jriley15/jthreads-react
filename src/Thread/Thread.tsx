@@ -8,7 +8,7 @@ const Thread: React.FC<ThreadProps> = ({
   backgroundColor,
 }) => {
   const [height, setHeight] = useState(500);
-  const iframe = useRef();
+  const iframe = useRef<HTMLIFrameElement>();
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -17,6 +17,10 @@ const Thread: React.FC<ThreadProps> = ({
         setHeight(data.height);
       } else if (data === "ready") {
         setReady(true);
+        iframe.current.contentWindow.postMessage(
+          { href: window.location.href },
+          "*"
+        );
       }
     };
 
