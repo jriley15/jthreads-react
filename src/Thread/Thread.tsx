@@ -29,7 +29,22 @@ const Thread: React.FC<ThreadProps> = ({
     <React.Fragment>
       {!ready && (
         <div className="jthreads-container">
-          <div className="loader" />
+          <div
+            className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+            role="progressbar"
+            style={{ width: "40px", height: "40px;" }}
+          >
+            <svg className="MuiCircularProgress-svg" viewBox="22 22 44 44">
+              <circle
+                className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                cx="44"
+                cy="44"
+                r="20.2"
+                fill="none"
+                stroke-width="3.6"
+              ></circle>
+            </svg>
+          </div>
         </div>
       )}
       <iframe
