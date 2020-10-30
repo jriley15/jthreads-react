@@ -26,7 +26,9 @@ const Thread: React.FC<ThreadProps> = ({
 
     window.addEventListener("message", handleMessage);
 
-    return () => {};
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
   }, []);
 
   return (
@@ -53,7 +55,7 @@ const Thread: React.FC<ThreadProps> = ({
       )}
       <iframe
         title="JThreads"
-        src={`https://devjthreads.jrdn.tech/?namespaceId=${namespaceId}&threadId=${threadId}&backgroundColor=${
+        src={`https://jthreads-ssr.jrdn.tech/?namespaceId=${namespaceId}&threadId=${threadId}&backgroundColor=${
           backgroundColor || "FFF"
         }`}
         width="100%"
